@@ -14,5 +14,23 @@ function displayDogs(dog) {
 
     dogSpan.textContent = dog.name;
     dogBar.appendChild(dogSpan);
-    
+
+    dogSpan.addEventListener("click", () => displayInfo(dog, dogSpan));
+}
+
+function displayInfo(dog) {
+    const dogInfo = document.getElementById("dog-info");
+    const dogContainer = document.getElementById("dog-summary-container");
+    const dogImage = document.createElement("img");
+    const dogName = document.createElement("h2");
+    const dogBehavior = document.createElement("button");
+
+    dogInfo.textContent = "";
+
+    dogImage.setAttribute("src", dog.image);
+    dogName.textContent = dog.name;
+    dog.isGoodDog === true ? dogBehavior.textContent = "Good Dog!" : dogBehavior.textContent = "Bad Dog!";
+
+    dogInfo.append(dogImage, dogName, dogBehavior);
+    dogContainer.appendChild(dogInfo);
 }
